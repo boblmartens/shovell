@@ -30,3 +30,13 @@ Migrating to CreateStories (20080912054414)
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
   [4;35;1mStory Load (0.000509)[0m   [0mSELECT * FROM "stories" [0m
+  [4;36;1mStory Load (0.001061)[0m   [0;1mSELECT * FROM "stories" WHERE ("stories"."name" = 'My shiny weblog') LIMIT 1[0m
+  [4;35;1mStory Update (0.001333)[0m   [0mUPDATE "stories" SET "name" = 'My weblog about Ruby on Rails', "updated_at" = '2008-09-12 16:10:22' WHERE "id" = 1[0m
+  [4;36;1mStory Update (0.000634)[0m   [0;1mUPDATE "stories" SET "name" = 'A weblog about Ruby on Rails', "updated_at" = '2008-09-12 16:11:23' WHERE "id" = 1[0m
+  [4;35;1mStory Destroy (0.000621)[0m   [0m DELETE FROM "stories"
+ WHERE "id" = 1
+[0m
+  [4;36;1mStory Load (0.000558)[0m   [0;1mSELECT * FROM "stories" WHERE ("stories"."id" = 1) [0m
+  [4;35;1mStory Load (0.000553)[0m   [0mSELECT * FROM "stories" WHERE ("stories"."name" = 'Sitepoint') LIMIT 1[0m
+  [4;36;1mStory Load (0.000559)[0m   [0;1mSELECT * FROM "stories" WHERE ("stories"."name" = 'Forum') LIMIT 1[0m
+  [4;35;1mStory Load (0.001102)[0m   [0mSELECT * FROM "stories" [0m
