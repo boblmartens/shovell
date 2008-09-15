@@ -6,6 +6,14 @@
 	<%= @story.name %>
 </h2>
 
+<ul id="vote_history">
+	<% if @story.votes.empty? %>
+		<em>No shoves yet!</em>
+	<% else %>
+		<%= render :partial => 'votes/vote', :collection => @story.votes.latest %>
+	<% end %>
+</ul>
+
 <p>
 	<%= link_to @story.link, @story.link %>
 </p>
