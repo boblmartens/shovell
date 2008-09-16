@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 	map.resources :stories, :has_many => :votes
+	map.resource :session
 
 	# The priority is based upon order of creation: first created -> highest priority.
 
