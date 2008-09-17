@@ -1,7 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  story: one 
+  story: one
+  user: patrick
 
 two:
   story: one
+  user: patrick

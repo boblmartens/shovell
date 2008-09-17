@@ -1,7 +1,9 @@
 one:
   name: My shiny weblog 
-  link: http://bobnation.org/ 
+  link: http://bobnation.org/
+  user: patrick
 
 two:
   name: SitePoint Forums 
-  link: http://www.sitepoint.com/forums/ 
+  link: http://www.sitepoint.com/forums/
+  user: patrick
