@@ -4,6 +4,11 @@ class StoriesController < ApplicationController
   def index
   	fetch_stories 'votes_count >= 5'
 	end
+
+	def bin
+		fetch_stories 'votes_count < 5'
+		render :action => 'index'
+	end
 	
 	def new
 		@story = Story.new
@@ -22,11 +27,6 @@ class StoriesController < ApplicationController
 
 	def show
 		@story = Story.find(params[:id])
-	end
-
-	def bin
-		fetch_stories 'votes_count < 5'
-		render :action => 'index'
 	end
 
 	protected
