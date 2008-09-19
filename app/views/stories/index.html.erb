@@ -1,2 +1,5 @@
-A random link:
-<%= link_to @story.name, @story %>
+<h2>
+	<%= "Showing #{ pluralize(@stories.size, 'story') }" %>
+</h2>
+
+<%= render :partial => 'story', :collection => @stories %>
