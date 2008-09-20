@@ -1,4 +1,6 @@
 class Story < ActiveRecord::Base
+	after_create :create_initial_vote
+
 	validates_presence_of :name, :link
 	
 	belongs_to :user
@@ -10,5 +12,10 @@ class Story < ActiveRecord::Base
 
 	def to_param
 		"#{id}-#{name.gsub(/\W/, '-').downcase}"
+	end
+
+	protected
+	def create_initial_vote
+		votes.create :user => user
 	end
 end

@@ -14,9 +14,13 @@
 	<% end %>
 </ul>
 
+<p>
+	<%= @story.description %>
+</p>
+
 <p class="submitted_by">
 	Submitted by:
-	<span><%= @story.user.login %></span>
+	<span><%= link_to @story.user.login, @story.user %></span>
 </p>
 
 <p>
