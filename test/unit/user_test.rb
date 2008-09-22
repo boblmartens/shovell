@@ -10,4 +10,8 @@ class UserTest < ActiveSupport::TestCase
 		assert_equal 1, users(:patrick).votes.size
 		assert_equal votes(:two), users(:john).votes.first
 	end
+
+	def test_stories_voted_on_association
+		assert_equal [ stories(:one) ], users(:patrick).stories_voted_on
+	end
 end

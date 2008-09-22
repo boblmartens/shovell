@@ -35,4 +35,25 @@ class StoryTest < ActiveSupport::TestCase
 	def test_should_be_associated_with_user
 		assert_equal users(:patrick), stories(:one).user
 	end
+
+	def test_should_increment_votes_counter_cache
+		stories(:two).votes.create
+		stories(:two).reload
+		assert_equal 1, stories(:two).attributes['votes_count']
+	end
+
+	def test_should_decrement_votes_counter_cache
+		stories(:one).votes.first.destroy
+		stories(:one).reload
+		assert_equal 1, stories(:one).attributes['votes_count']
+	end
+
+	def test_should_cast_vote_after_creating_story
+		s = Story.create(
+			:name => 'The 2008 Elections', 
+			:link => 'http://elections.com/', 
+			:user => users(:patrick)
+		)
+		assert_equal users(:patrick), s.votes.first.user
+	end
 end

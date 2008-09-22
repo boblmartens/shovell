@@ -5,7 +5,14 @@ class StoriesControllerTest < ActionController::TestCase
 		get :index
 		assert_response :success
 		assert_template 'index'
-		assert_not_nil assigns(:story)
+		assert_not_nil assigns(:stories)
+	end
+
+	def test_should_show_bin
+		get :bin
+		assert_response :success
+		assert_template 'index'
+		assert_not_nil assigns(:stories)
 	end
 
 	def test_should_show_new
@@ -81,5 +88,19 @@ class StoriesControllerTest < ActionController::TestCase
 			:link => 'http://www.story-with-user.com/'
 		}
 		assert_equal users(:patrick), assigns(:story).user
+	end
+
+	def test_should_only_list_promoted_on_index
+		get :index
+		assert_equal [ stories(:promoted) ], assigns(:stories)
+	end
+
+	def test_should_only_list_unpromoted_in_bin
+		get :bin
+		assert_equal [ stories(:two), stories(:one) ], assigns(:stories)
+	end
+
+	def test_should_use_story_index_as_default
+		assert_recognizes({ :controller => 'stories', :action => 'index' }, '/')
 	end
 end
