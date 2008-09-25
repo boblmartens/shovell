@@ -1,4 +1,6 @@
 class Story < ActiveRecord::Base
+	acts_as_taggable
+	
 	after_create :create_initial_vote
 
 	validates_presence_of :name, :link
