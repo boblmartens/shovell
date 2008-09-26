@@ -99,3 +99,7 @@ h2 {
 	margin: 0;
 	padding: 10px 0;
 }
+
+.tags a {
+	padding: 0 3px;
+}

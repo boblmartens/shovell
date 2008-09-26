@@ -56,4 +56,17 @@ class StoryTest < ActiveSupport::TestCase
 		)
 		assert_equal users(:patrick), s.votes.first.user
 	end
+
+	def test_should_act_as_taggable
+		stories(:one).tag_list = 'blog, ruby'
+		stories(:one).save
+		assert_equal 2, stories(:one).tags.size
+		assert_equal [ 'blog', 'ruby' ], stories(:one).tag_list
+	end
+
+	def test_should_find_tagged_with
+		stories(:one).tag_list = 'blog, ruby'
+		stories(:one).save
+		assert_equal [ stories(:one) ], Story.find_tagged_with('blog')
+	end
 end

@@ -123,6 +123,22 @@ class StoriesControllerTest < ActionController::TestCase
 
 	def test_should_show_new_form
 		get_with_user :new
-		assert_select 'form p', :count => 4
+		assert_select 'form p', :count => 5
+	end
+
+	def test_should_add_story_with_tags
+		post_with_user :create, :story => {
+			:name => 'story with tags',
+			:link => 'http://www.story-with-tags.com/',
+			:tag_list => 'rails, blog'
+		}
+		assert_equal [ 'rails', 'blog' ], assigns(:story).tag_list
+	end
+
+	def test_should_show_story_with_tags
+		stories(:promoted).tag_list = 'apple, music'
+		stories(:promoted).save
+		get :show, :id => stories(:promoted).id
+		assert_select 'p.tags a', 2
 	end
 end
